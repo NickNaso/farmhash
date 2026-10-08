@@ -87,10 +87,10 @@ jobs:
         if: contains(matrix.container, 'rockylinux')
         run: |
           curl -sL https://rpm.nodesource.com/setup_${{ matrix.nodejs_version }}.x | bash -
-          dnf install -y git nodejs
+          dnf install -y git nodejs xz
       - name: Dependencies (Linux musl)
         if: contains(matrix.container, 'alpine')
-        run: apk add git --update-cache
+        run: apk add git xz --update-cache
       - name: Dependencies (Node.js)
         if: contains(matrix.os, 'macos') || contains(matrix.os, 'windows')
         uses: actions/setup-node@v5
@@ -136,7 +136,7 @@ jobs:
           sed -i "/^ID=/s/alpine/NotpineForGHA/" /etc/os-release
           mkdir /opt/bin
           ln -s /usr/bin/node /opt/bin/node
-      - run: apk add git --update-cache
+      - run: apk add git xz --update-cache
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run build
