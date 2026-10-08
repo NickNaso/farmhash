@@ -136,7 +136,7 @@ jobs:
         run: |
           sed -i "/^ID=/s/alpine/NotpineForGHA/" /etc/os-release
           mkdir /opt/bin
-          ln -s /usr/bin/node /opt/bin/node
+          ln -s "$(command -v node)" /opt/bin/node
       - run: apk add git xz --update-cache
       - uses: actions/checkout@v4
       - run: npm install
