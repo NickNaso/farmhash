@@ -1,0 +1,13 @@
+{
+  "name": "farmhash",
+  "sources": ["src/upstream/farmhash.cc", "src/bindings.cc"],
+  "includeDirs": ["node_modules/node-addon-api"],
+  "cxxFlags": [
+    "-Wall",
+    "-funroll-loops",
+    "-fexceptions",
+    "-DFARMHASH_DEBUG=0",
+    "-DNAPI_VERSION=9"
+  ],
+  "outputDir": "build/.marmotta"
+}

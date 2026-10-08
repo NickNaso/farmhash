@@ -24,6 +24,10 @@ Functions in the FarmHash family are not suitable for cryptography.
 npm install farmhash
 ```
 
+Building from source requires Node.js 20 or later and npm. Run `npm run build`
+to compile the native addon with [Marmotta](https://www.npmjs.com/package/marmotta);
+Marmotta installs the Zig compiler when needed.
+
 ## Usage
 
 ```javascript

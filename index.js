@@ -4,13 +4,12 @@
 const farmhash = (function farmhashBinding() {
   const platform = require('./platform');
   try {
-    return require(`./src/build/Release/farmhash-${platform}.node`);
-  } catch (_err) {
-    try {
-      return require(`./build/farmhash-${platform}.node`);
-    } catch (_err) {
-      throw new Error(`Unsupported platform: ${platform}`);
+    return require(`./build/farmhash-${platform}.node`);
+  } catch (err) {
+    if (err.code === 'MODULE_NOT_FOUND') {
+      throw new Error(`Unsupported platform: ${platform}`, { cause: err });
     }
+    throw err;
   }
 })();
 
