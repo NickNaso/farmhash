@@ -118,6 +118,7 @@ jobs:
       volumes:
         - /opt:/opt:rw,rshared
         - /opt:/__e/node20:ro,rshared
+        - /opt:/__e/node24:ro,rshared
     strategy:
       fail-fast: false
       matrix:
